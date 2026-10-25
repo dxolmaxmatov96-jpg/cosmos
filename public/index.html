@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COSMOS — Quyosh tizimi bo'ylab sayohat</title>
+<meta name="description" content="Jonli, interaktiv Quyosh tizimi. Sayyoralarni kashf eting va koinotga xabar qoldiring.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<header class="nav">
+  <div class="logo">COSMOS<span>.</span></div>
+  <div class="online"><i></i><b id="onlineCount">1</b> kishi hozir koinotda</div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow reveal">Interaktiv sayohat · 8 sayyora · 1 ta Quyosh</p>
+  <h1 class="reveal">Koinot <em>sizning</em><br>qo'lingizda</h1>
+  <p class="lead reveal">Sayyoralarni bosing, tezlikni o'zgartiring va butun dunyodagi sayohatchilar bilan birga yulduzlarga xabar qoldiring.</p>
+  <a href="#system" class="cta reveal"><span>Sayohatni boshlash</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+  <div class="scroll-hint"></div>
+</section>
+
+<section id="system" class="section">
+  <div class="section-head reveal">
+    <h2>Quyosh tizimi</h2>
+    <p>Har bir sayyorani bosing — ma'lumotlar serverdan jonli yuklanadi.</p>
+  </div>
+  <div class="stage reveal">
+    <canvas id="solar"></canvas>
+    <div class="controls">
+      <button id="pauseBtn" title="Pauza">❚❚</button>
+      <label>Vaqt tezligi <input type="range" id="speed" min="0" max="10" step="0.1" value="1"></label>
+      <span id="speedLabel">1.0×</span>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite">
+      <button class="close" id="panelClose" aria-label="Yopish">×</button>
+      <div class="planet-orb" id="pOrb"></div>
+      <h3 id="pName"></h3>
+      <p class="fact" id="pFact"></p>
+      <dl>
+        <div><dt>Diametri</dt><dd id="pDiam"></dd></div>
+        <div><dt>Harorat</dt><dd id="pTemp"></dd></div>
+        <div><dt>Yo'ldoshlar</dt><dd id="pMoons"></dd></div>
+        <div><dt>Bir kun</dt><dd id="pDay"></dd></div>
+      </dl>
+      <div class="bar-label">Yerga nisbatan kattaligi</div>
+      <div class="bar"><div id="pBar"></div></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section stats">
+  <div class="stat reveal"><b data-count="8">0</b><span>sayyora</span></div>
+  <div class="stat reveal"><b data-count="4600000000" data-fmt="short">0</b><span>yillik tarix</span></div>
+  <div class="stat reveal"><b id="msgCount" data-count="0">0</b><span>qoldirilgan xabar</span></div>
+  <div class="stat reveal"><b id="uptime">0</b><span>server ishlash vaqti</span></div>
+</section>
+
+<section id="guest" class="section">
+  <div class="section-head reveal">
+    <h2>Koinotga xabar yozing</h2>
+    <p>Xabaringiz hamma ochiq oynalarda <u>bir zumda</u> paydo bo'ladi (server → brauzer, jonli).</p>
+  </div>
+  <form id="form" class="form reveal" autocomplete="off">
+    <input id="name" maxlength="24" placeholder="Ismingiz (ixtiyoriy)">
+    <input id="text" maxlength="200" placeholder="Yulduzlarga nima demoqchisiz?" required>
+    <button type="submit">Yuborish ✦</button>
+  </form>
+  <p class="err" id="err"></p>
+  <ul id="wall" class="wall"></ul>
+</section>
+
+<footer>Node.js backend + Canvas frontend bilan yaratilgan · COSMOS © 2026</footer>
+<script src="/app.js"></script>
+</body>
+</html>
