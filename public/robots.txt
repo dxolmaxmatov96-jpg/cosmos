@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://cosmos-dxolmaxmatov.onrender.com/sitemap.xml
